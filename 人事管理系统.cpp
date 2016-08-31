@@ -67,6 +67,7 @@ void add(employee p[])
 	printf("\t姓名：");
 	scanf("%s",&p->name);
 	printf("\t性别：");
+	 fflush(stdin);
 	scanf("%c",&p->sex); 
 	printf("\t职务编号：");
 	scanf("%s",&p->OfficialID);
