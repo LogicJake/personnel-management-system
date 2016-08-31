@@ -21,7 +21,66 @@ struct employee
 	int wages;//职务工资 
 
 };
+void add(employee p[]);
+void print();
+void modify();
+void Delete();
+void displaymenu(); 
 int main()
 {
-	
+	employee e[100];
+	char choice;
+	do
+	{
+		displaymenu();
+		scanf("%c",&choice);
+		switch(choice)
+		{
+			case'a':add(e);break;
+//			case'b':Delete();break;
+//			case'c':modify();break;
+//			case'd':print();break;
+		}
+	}while(choice !='e');
  } 
+void displaymenu()
+{
+	printf("\t\t\t欢迎使用人事管理系统\n\n");
+	printf("\t****************************************************");
+	printf("\n\t* a)录入信息\t\t\t");
+	printf("\tb)修改信息 *\n");
+	printf("\t* c)插入信息\t\t\t");
+	printf("\td)删除信息 *\n");
+	printf("\t* e)查询\t\t\t");
+	printf("\tf)退出     *\n");
+	printf("\t****************************************************\n");
+	printf("\t请输入你的选择：");
+}
+/*信息的录入：包括职工的基本信息（工号、姓名、性别、职务编号、出生日期、地址等）、
+职工所属部门信息（部门编号、职务编号、备注等）、职工工资信息（职务编号、职务名称、职务工资）
+*/
+void add(employee p[])
+{
+	printf("\t请输入职工的基本信息\n");
+	printf("\t工号：");
+	scanf("%d",&p->number);
+	printf("\t姓名：");
+	scanf("%s",&p->name);
+	printf("\t性别：");
+	scanf("%c",&sex); 
+	printf("职务编号");
+	scanf();
+	printf();
+	scanf();
+	printf();
+	scanf();
+	printf();
+	scanf();
+	printf();
+	scanf();
+	printf();
+	scanf();
+	printf();
+	scanf();
+	printf("%s",p->name);
+}
