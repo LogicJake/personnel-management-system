@@ -78,6 +78,11 @@ void displaymenu()
 }
 void add(employee p[])
 {
+	int i;
+	for(i=0;i++;i<100) 
+	{
+		
+	}
 	printf("\t请输入职工的基本信息\n");
 	printf("\t工号：");
 	scanf("%d",&p->number);
