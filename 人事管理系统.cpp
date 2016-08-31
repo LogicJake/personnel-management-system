@@ -7,6 +7,7 @@
 ⑤信息的查询：该模块提供查询符合某一条件的人事档案的界面，要求包括两种查询方式，一种是按姓名查找，另一种是按职工号查找。
 */
 #include<stdio.h>
+#include<stdlib.h>
 struct employee
 {
 	int number;//工号 
@@ -36,11 +37,30 @@ int main()
 		scanf("%c",&choice);
 		switch(choice)
 		{
-			case'a':add(e);break;
+			case'a':
+			{	
+				add(e);
+				printf("\t继续输入请按‘y’，结束输入请按‘n’：");
+				char choice_two;
+				scanf("%c",&choice_two);
+				while(choice_two =='y')
+				{
+					add(e);
+					printf("\t继续输入请按‘y’，结束输入请按‘n’:");
+					scanf("%c",&choice_two);
+					fflush(stdin);//清空输入区缓存 ;
+				}
+				system("cls");
+				break;
+			}
+			
 //			case'b':Delete();break;
 //			case'c':modify();break;
 //			case'd':print();break;
 		}
+		displaymenu();
+		fflush(stdin);//清空输入区缓存 
+		scanf("%c",&choice);
 	}while(choice !='e');
  } 
 void displaymenu()
@@ -56,33 +76,39 @@ void displaymenu()
 	printf("\t****************************************************\n");
 	printf("\t请输入你的选择：");
 }
-/*信息的录入：包括职工的基本信息（工号、姓名、性别、职务编号、出生日期、地址等）、
-职工所属部门信息（部门编号、职务编号、备注等）、职工工资信息（职务编号、职务名称、职务工资）
-*/
 void add(employee p[])
 {
 	printf("\t请输入职工的基本信息\n");
 	printf("\t工号：");
 	scanf("%d",&p->number);
+	fflush(stdin);//清空输入区缓存
 	printf("\t姓名：");
-	scanf("%s",&p->name);
+	scanf("%s",&p->name); 
+	fflush(stdin);//清空输入区缓存 ;
 	printf("\t性别：");
-	 fflush(stdin);
 	scanf("%c",&p->sex); 
+	fflush(stdin);//清空输入区缓存 
 	printf("\t职务编号：");
 	scanf("%s",&p->OfficialID);
+	fflush(stdin);//清空输入区缓存
 	printf("\t出生日期：");
 	scanf("%s",&p->birthday);
+	fflush(stdin);//清空输入区缓存
 	printf("\t地址：");
 	scanf("%s",&p->address);
-	printf("\t职工所属部门信息\n");
+	fflush(stdin);//清空输入区缓存
+	printf("\n\t职工所属部门信息\n");
 	printf("\t部门编号：");
 	scanf("%s",&p->DeptID);
+	fflush(stdin);//清空输入区缓存
 	printf("\t备注：");
 	scanf("%s",&p->remark);
-	printf("\t职工工资信息\n");
+	fflush(stdin);//清空输入区缓存
+	printf("\n\t职工工资信息\n");
 	printf("\t职务名称：");
 	scanf("%s",&p->OfficialName);
+	fflush(stdin);//清空输入区缓存
 	printf("\t职务工资：");
 	scanf("%s",&p->wages);
+	fflush(stdin);//清空输入区缓存
 }
