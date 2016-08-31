@@ -15,7 +15,7 @@ struct employee
     char OfficialID[10];//职务编号
 	char birthday[21];//生日 
 	char address[20];//地址 
-	char DeptID[20];//职务编号 
+	char DeptID[20];//部门编号 
 	char remark[100];//备注
 	char OfficialName[20];//职务名称
 	int wages;//职务工资 
@@ -67,20 +67,21 @@ void add(employee p[])
 	printf("\t姓名：");
 	scanf("%s",&p->name);
 	printf("\t性别：");
-	scanf("%c",&sex); 
-	printf("职务编号");
-	scanf();
-	printf();
-	scanf();
-	printf();
-	scanf();
-	printf();
-	scanf();
-	printf();
-	scanf();
-	printf();
-	scanf();
-	printf();
-	scanf();
-	printf("%s",p->name);
+	scanf("%c",&p->sex); 
+	printf("\t职务编号：");
+	scanf("%s",&p->OfficialID);
+	printf("\t出生日期：");
+	scanf("%s",&p->birthday);
+	printf("\t地址：");
+	scanf("%s",&p->address);
+	printf("\t职工所属部门信息\n");
+	printf("\t部门编号：");
+	scanf("%s",&p->DeptID);
+	printf("\t备注：");
+	scanf("%s",&p->remark);
+	printf("\t职工工资信息\n");
+	printf("\t职务名称：");
+	scanf("%s",&p->OfficialName);
+	printf("\t职务工资：");
+	scanf("%s",&p->wages);
 }
