@@ -311,7 +311,7 @@ int main()
 			case'c':insert(head);system("PAUSE");system("cls");displaymenu();break;
 			case'd':del(head);system("PAUSE");system("cls");displaymenu();break;
 			case'e':search(head);system("PAUSE");system("cls");displaymenu();break;
-			case'f':save(head);exit(1);
+			case'f':save(head);printf("档案已更新并保存");exit(1);
 		}
 		
 	}		
