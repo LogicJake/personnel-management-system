@@ -73,49 +73,127 @@ void  print(employee * head)
 		} 
 	} 
 } 
-void del(employee * head, int num) 
-{ 
-	employee *p,*temp; 
+void modify(employee * head)
+{
+	char choice;
+	int num;
+	printf("\t请输入你要修改职工的编号：");
+	fflush(stdin);//清空输入区缓存 
+	scanf("%d",&num); 
+	employee *p;
 	p=head->next;
-//	printf("%d",p->number); 
-	for(;p!=NULL;p=p->next)   /*q指针从链表的第一个结点到尾结点 */
+	for(;p!=NULL;p=p->next)   
 	{
 		if(p->number==num)
-			break; 	
+		{
+			printf("\t工号：%d\n\t姓名：%s\n",p->number,p->name);
+			break;
+		}
 	}
 	if(p==NULL) 
-		printf("无此人信息");
-	p=head;
-	while(p->next !=NULL  &&  p->next->number != num) 
-		p=p->next;
-	temp=p->next;
-	if(p->next!=NULL)
-	{   
-		p->next=temp->next;
-		free(temp); 
-	} 
-
+		printf("\t无此人信息!\n");
+	else
+	{
+		printf("\t确认修改吗？(y or n)");
+		fflush(stdin);//清空输入区缓存
+		scanf("%c",&choice); 
+		if(choice=='y')
+		{
+		printf("\t请输入职工的基本信息\n");
+		printf("\t工号：");
+		scanf("%d",&p->number);
+		fflush(stdin);//清空输入区缓存
+		printf("\t姓名：");
+		scanf("%s",&p->name); 
+		fflush(stdin);//清空输入区缓存 ;
+		printf("\t性别：");
+		scanf("%c",&p->sex); 
+		fflush(stdin);//清空输入区缓存 
+		printf("\t职务编号：");
+		scanf("%s",&p->OfficialID);
+		fflush(stdin);//清空输入区缓存
+		printf("\t出生日期：");
+		scanf("%s",&p->birthday);
+		fflush(stdin);//清空输入区缓存
+		printf("\t地址：");
+		scanf("%s",&p->address);
+		fflush(stdin);//清空输入区缓存
+		printf("\n\t职工所属部门信息\n");
+		printf("\t部门编号：");
+		scanf("%s",&p->DeptID);
+		fflush(stdin);//清空输入区缓存
+		printf("\t备注：");
+		scanf("%s",&p->remark);
+		fflush(stdin);//清空输入区缓存
+		printf("\n\t职工工资信息\n");
+		printf("\t职务名称：");
+		scanf("%s",&p->OfficialName);
+		fflush(stdin);//清空输入区缓存
+		printf("\t职务工资：");
+		scanf("%s",&p->wages);
+		fflush(stdin);//清空输入区缓存
+		}
+	
+	}
+} 
+void del(employee * head) 
+{ 
+	int num;
+	char choice;
+	printf("\t请输入你要删除职工的编号：");
+	scanf("%d",&num); 
+	employee *p,*temp; 
+	p=head->next;
+	for(;p!=NULL;p=p->next)   
+	{
+		if(p->number==num)
+		{
+			printf("\t工号：%d\n\t姓名：%s\n",p->number,p->name);
+			break;
+		}
+			 	
+	}
+	if(p==NULL) 
+		printf("\t无此人信息!\n");
+	else
+	{
+		p=head;
+		fflush(stdin);//清空输入区缓存
+		printf("\t确认删除吗？(y or n)");
+		scanf("%c",&choice);
+		fflush(stdin);//清空输入区缓存 
+		if(choice=='y')
+		{
+			while(p->next !=NULL  &&  p->next->number != num) 
+			p=p->next;
+			temp=p->next;
+			if(p->next!=NULL)
+			{   
+				p->next=temp->next;
+				free(temp); 
+			} 
+		}
+		
+	}
+	
 }
 int main()
 {
 	employee *em,*head=NULL; 
-	//head=create();
 	char choice;
 	displaymenu();
-	do
+	while(1)
 	{
-		
 		scanf("%c",&choice);
 		switch(choice)
 		{
-			case'a':head=create();printf("\n\t信息录入完毕\n");system("PAUSE");system("cls");break;	
-			case'd':del(head,1);system("PAUSE");system("cls");break;
+			case'a':head=create();printf("\n\t信息录入完毕\n");system("PAUSE");system("cls");displaymenu();break;	
+			case'b':modify(head);displaymenu();break;
+			case'd':del(head);system("PAUSE");system("cls");displaymenu();break;
 //			case'c':modify();break;
 //			case'd':print();break;
+			case'f':print(head);exit(1);
 		}
-//		fflush(stdin);//清空输入区缓存 
-		displaymenu();
-		scanf("%c",&choice);
-	}while(choice!='f'); 
-	print(head);
+		
+	}		
  } 
