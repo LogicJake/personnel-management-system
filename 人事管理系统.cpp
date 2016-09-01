@@ -25,6 +25,7 @@ struct employee
 void add(employee p[]);
 void print();
 void modify();
+
 void Delete();
 void displaymenu(); 
 int main()
