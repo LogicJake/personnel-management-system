@@ -1,11 +1,3 @@
-/* 
-①信息的录入：包括职工的基本信息（工号、姓名、性别、职务编号、出生日期、地址等）、
-职工所属部门信息（部门编号、职务编号、备注等）、职工工资信息（职务编号、职务名称、职务工资）
-②信息的修改：当职工信息发生变化时，便于对信息进行修改。
-③信息的插入：该模块主要功能是输入新职工的信息。
-④信息的删除：该模块的主要功能时删除职工信息。  
-⑤信息的查询：该模块提供查询符合某一条件的人事档案的界面，要求包括两种查询方式，一种是按姓名查找，另一种是按职工号查找。
-*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -47,21 +39,21 @@ employee  *create()
 		exit(0); 
 	} 
 	employee *head,*current,*last;
-	head=current=(employee *)malloc(LEN); /* 申请一个头结点*/ 
-	last=(employee *)malloc(LEN);   /* 申请一个数据结点*/ 
+	head=current=(employee *)malloc(LEN); 
+	last=(employee *)malloc(LEN); 
 	fscanf(fp,"%d %s %c %s %s %s %s %s %s %d",&last->number,&last->name,&last->sex,&last->OfficialID,&last->birthday,&last->address,&last->DeptID,&last->remark,&last->OfficialName,&last->wages); 
 	while(last->number!=0)
-	{  /* 学号为0 表示建立链表结束*/ 
+	{  
 		current->next=last; 
 		current=last; 
-		last=(employee *)malloc(LEN);/* 申请一个新数据结点*/ 
+		last=(employee *)malloc(LEN);
 		fscanf(fp,"%d %s %c %s %s %s %s %s %s %d",&last->number,&last->name,&last->sex,&last->OfficialID,&last->birthday,&last->address,&last->DeptID,&last->remark,&last->OfficialName,&last->wages); 
 		
 	} 
 		current->next=NULL; 
 		free(last);
 		fclose(fp); 
-		return head; /* 返回链表的表头*/ 
+		return head;  
 }
 void modify(employee * head)
 {
@@ -222,9 +214,9 @@ void search(employee *head)
 		char name[20];
 		printf("\t请输入姓名：");
 		scanf("%s",name);
-		for(;p!=NULL;p=p->next)  /*从链表的第一个结点到尾结点 */
+		for(;p!=NULL;p=p->next)  
 		{
-			if(strcmp(p->name,name)==0)     /*如果输入的name和结点中的name一样 */
+			if(strcmp(p->name,name)==0)     
 			{   
 				printf("\n\t\t%s的档案显示如下\n\n",name);
 				printf("\t\t职工的基本信息\n"); 
@@ -251,9 +243,9 @@ void search(employee *head)
 		int number;
 		printf("\t请输入工号：");
 		scanf("%d",&number);
-		for(;p!=NULL;p=p->next)  /*从链表的第一个结点到尾结点 */
+		for(;p!=NULL;p=p->next) 
 		{
-			if(p->number==number)     /*如果输入的name和结点中的name一样 */
+			if(p->number==number)     
 			{   
 				printf("\n\t\t工号%d的档案显示如下\n\n",number);
 				printf("\t\t职工的基本信息\n"); 
@@ -296,7 +288,7 @@ void save(employee *head)
 } 
 int main()
 {
-	employee *em,*head=NULL; 
+	employee *head=NULL; 
 	char choice;
 	displaymenu();
 	while(1)
