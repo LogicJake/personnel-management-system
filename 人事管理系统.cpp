@@ -287,8 +287,6 @@ void save(employee *head)
 	} 
 	for(;p!=NULL;p=p->next) 
 	{	
-	printf("\tNumber=%d,name=%s\n", p->number,p->name); 
-	//	printf("%d %s %c %s %s %s %s %s %s %d",p->number,p->name,p->sex,p->OfficialID,p->birthday,p->address,p->DeptID,p->remark,p->OfficialName,p->wages);
 		fprintf(fp,"%d %s %c %s %s %s %s %s %s %d",p->number,p->name,p->sex,p->OfficialID,p->birthday,p->address,p->DeptID,p->remark,p->OfficialName,p->wages); 
 		fputs("\n",fp);
 
@@ -311,7 +309,7 @@ int main()
 			case'c':insert(head);system("PAUSE");system("cls");displaymenu();break;
 			case'd':del(head);system("PAUSE");system("cls");displaymenu();break;
 			case'e':search(head);system("PAUSE");system("cls");displaymenu();break;
-			case'f':save(head);printf("档案已更新并保存");exit(1);
+			case'f':save(head);printf("\t档案已更新并保存");exit(1);
 		}
 		
 	}		
